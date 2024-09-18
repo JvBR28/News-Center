@@ -1,0 +1,14 @@
+/*
+Theme Name: News Center
+Theme URI: 
+Author: João
+Author URI: 
+Description: Tema de Notícias 
+Version: 1.0
+Tags: noticias, informações, fatos, exclusivo
+ 
+*/
+ 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

@@ -1,0 +1,13 @@
+# Ignore o arquivo wp-config.php
+wp-config.php
+
+# Ignore as pastas wp-admin e wp-includes
+wp-admin/
+wp-includes/
+
+# Ignore os arquivos .htacess
+.htaccess
+.htaccess.bk
+
+# Ignore a pasta de plugins dentro de wp-content
+wp-content/plugins/
