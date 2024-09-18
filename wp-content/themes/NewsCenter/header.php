@@ -12,12 +12,10 @@
 
 <header class="bg-gray-700 text-gray-200">
   <div class="container mx-auto flex items-center justify-between p-4">
-    <!-- Logo -->
     <div class="text-2xl font-bold">
       <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-blue-400"><?php bloginfo('name'); ?></a>
     </div>
 
-    <!-- Navegação Desktop -->
     <nav class="hidden lg:flex">
       <?php wp_nav_menu([
           'theme_location' => 'menu-principal',
@@ -29,7 +27,6 @@
       ]); ?>
     </nav>
 
-    <!-- Barra de Pesquisa -->
     <div class="relative hidden lg:block">
       <input type="text" placeholder="Buscar..." class="p-2 pl-10 rounded bg-gray-200 text-gray-800 focus:outline-none focus:bg-gray-300">
       <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
@@ -37,7 +34,6 @@
       </svg>
     </div>
 
-    <!-- Botão do Menu Mobile -->
     <div class="block lg:hidden">
       <button id="menu-btn" class="p-2 text-gray-200 hover:bg-gray-600 rounded">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -48,7 +44,6 @@
   </div>
 </header>
 
-<!-- Menu Mobile -->
 <nav id="mobile-menu" class="lg:hidden hidden absolute bg-gray-600 w-full ">
   <?php wp_nav_menu([
       'theme_location' => 'menu-principal',
