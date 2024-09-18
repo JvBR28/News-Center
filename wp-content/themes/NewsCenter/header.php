@@ -11,7 +11,7 @@
 <body class="bg-gray-50 text-gray-800">
 
 <header class="bg-gray-700 text-gray-200">
-  <div class="container mx-auto flex items-center justify-between p-4">
+  <div class="container mx-auto flex items-center justify-between py-4">
     <div class="text-2xl font-bold">
       <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-blue-400"><?php bloginfo('name'); ?></a>
     </div>
