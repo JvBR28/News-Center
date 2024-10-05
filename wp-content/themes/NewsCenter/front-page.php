@@ -5,28 +5,40 @@
   <section class="py-8">
     <div class="container mx-auto">
       <h2 class="text-3xl font-bold mb-6">Notícias Principais</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <?php
         $main_query = new WP_Query(array(
-          'posts_per_page' => 5,
+          'posts_per_page' => 3,
           'meta_key' => 'destaque',
           'meta_value' => '1',
           'orderby' => 'date',
           'order' => 'DESC'
         ));
-        
+
         if ($main_query->have_posts()) :
-          while ($main_query->have_posts()) : $main_query->the_post(); ?>
-            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg">
-              <a href="<?php the_permalink(); ?>" class="block">
-                <?php if (has_post_thumbnail()) : ?>
-                  <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="w-full h-48 object-cover rounded-lg mb-4">
-                <?php endif; ?>
-                <h3 class="text-xl font-semibold"><?php the_title(); ?></h3>
-                <p class="text-gray-600 mt-2"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
-              </a>
-            </div>
-          <?php endwhile;
+          $post_count = 0;
+          while ($main_query->have_posts()) : $main_query->the_post();
+            $post_count++;
+            if ($post_count === 1) : ?>
+              <div class="lg:col-span-2 row-span-2 bg-white p-4 rounded-lg shadow-md hover:shadow-lg">
+                <a href="<?php the_permalink(); ?>" class="block">
+                  <?php if (has_post_thumbnail()) : ?>
+                    <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>" class="w-full h-64 object-cover rounded-lg mb-4">
+                  <?php endif; ?>
+                  <h3 class="text-2xl font-semibold"><?php the_title(); ?></h3>
+                </a>
+              </div>
+            <?php else : ?>
+              <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg">
+                <a href="<?php the_permalink(); ?>" class="block">
+                  <?php if (has_post_thumbnail()) : ?>
+                    <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="w-full h-40 object-cover rounded-lg mb-4">
+                  <?php endif; ?>
+                  <h3 class="text-xl font-semibold"><?php the_title(); ?></h3>
+                </a>
+              </div>
+            <?php endif;
+          endwhile;
           wp_reset_postdata();
         else : ?>
           <p><?php _e('Nenhuma notícia encontrada.'); ?></p>
@@ -51,18 +63,31 @@
               'orderby' => 'date',
               'order' => 'DESC'
             ));
-            
+
             if ($category_query->have_posts()) :
-              while ($category_query->have_posts()) : $category_query->the_post(); ?>
-                <div class="mb-4">
-                  <a href="<?php the_permalink(); ?>" class="block">
+              $post_count = 0;
+              while ($category_query->have_posts()) : $category_query->the_post();
+                $post_count++;
+                if ($post_count === 1) : ?>
+                  <div class="bg-white p-4 rounded-lg shadow-md mb-4 hover:shadow-lg">
+                    <a href="<?php the_permalink(); ?>" class="block">
+                      <?php if (has_post_thumbnail()) : ?>
+                        <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="w-full h-40 object-cover rounded-lg mb-4">
+                      <?php endif; ?>
+                      <h4 class="text-xl font-bold"><?php the_title(); ?></h4>
+                    </a>
+                  </div>
+                <?php else : ?>
+                  <div class="flex mb-4 items-center">
                     <?php if (has_post_thumbnail()) : ?>
-                      <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php the_title(); ?>" class="w-full h-32 object-cover rounded-lg mb-2">
+                      <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php the_title(); ?>" class="w-20 h-20 object-cover rounded-lg mr-4">
                     <?php endif; ?>
-                    <h4 class="text-lg font-semibold"><?php the_title(); ?></h4>
-                  </a>
-                </div>
-              <?php endwhile;
+                    <a href="<?php the_permalink(); ?>" class="block">
+                      <h4 class="text-md font-semibold"><?php the_title(); ?></h4>
+                    </a>
+                  </div>
+                <?php endif;
+              endwhile;
               wp_reset_postdata();
             else : ?>
               <p><?php _e('Nenhuma notícia encontrada nesta categoria.'); ?></p>
@@ -74,4 +99,5 @@
   </section>
 
 </main>
+
 <?php get_footer(); ?>
