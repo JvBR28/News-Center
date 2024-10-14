@@ -4,7 +4,7 @@ Theme URI:
 Author: João
 Author URI: 
 Description: Tema de Notícias 
-Version: 1.0
+Version: 1.8
 Tags: noticias, informações, fatos, exclusivo
  
 */
@@ -12,3 +12,15 @@ Tags: noticias, informações, fatos, exclusivo
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.pagination-page-number {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-400 hover:text-white transition-colors;
+  }
+  
+  .pagination a {
+    @apply inline-block mx-1;
+  }
+  
+  .pagination .current .pagination-page-number {
+    @apply bg-gray-800 text-white;
+  }

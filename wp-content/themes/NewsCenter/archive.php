@@ -67,14 +67,17 @@
         <?php endif; ?>
       </div>
 
-      <h2 class="text-3xl font-bold mb-6 mt-8">Ultimas Noticias</h2>
+      <h2 class="text-3xl font-bold mb-6 mt-8">Últimas Notícias</h2>
       <div class="news-list">
         <?php
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
         $all_posts_query = new WP_Query(array(
-          'posts_per_page' => -1, 
+          'posts_per_page' => 10,
+          'paged' => $paged, 
           'orderby' => 'date',
           'order' => 'DESC',
-          'post__not_in' => wp_list_pluck($latest_posts_query->posts, 'ID'),  
+          'post__not_in' => wp_list_pluck($latest_posts_query->posts, 'ID'),
           'tax_query' => array(
             array(
               'taxonomy' => $current_taxonomy,
@@ -83,7 +86,6 @@
             ),
           ),
         ));
-
         if ($all_posts_query->have_posts()) : 
           while ($all_posts_query->have_posts()) : $all_posts_query->the_post(); ?>
             <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl mb-8 flex">
@@ -108,15 +110,20 @@
           <?php endwhile; ?>
         </div>
 
-        <div class="pagination mt-6">
-          <?php 
-          the_posts_pagination(array(
-            'mid_size'  => 2,
-            'prev_text' => __('« Anterior', 'textdomain'),
-            'next_text' => __('Próximo »', 'textdomain'),
-          )); 
-          ?>
-        </div>
+        <?php if ($all_posts_query->max_num_pages > 1) : ?>
+          <div class="pagination mt-6 text-center">
+            <?php 
+            the_posts_pagination(array(
+              'mid_size'  => 2,
+              'prev_text' => __('« Anterior', 'textdomain'),
+              'next_text' => __('Próximo »', 'textdomain'),
+              'screen_reader_text' => ' ',
+              'before_page_number' => '<span class="pagination-page-number inline-block bg-gray-200 px-3 py-1 rounded hover:bg-gray-400 hover:text-white transition">',
+              'after_page_number'  => '</span>',
+            )); 
+            ?>
+          </div>
+        <?php endif; ?>
 
       <?php else : ?>
         <p><?php _e('Nenhuma nova notícia encontrada.', 'textdomain'); ?></p>
