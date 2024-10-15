@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="container mx-auto p-4">
-
+    <!-- Título e Data (ACF) -->
     <header class="mb-8 text-center">
         <h1 class="text-5xl font-bold mb-4"><?php the_title(); ?></h1>
         <div class="text-gray-500 text-lg">
@@ -19,7 +19,7 @@
                 </div>
             <?php endif; ?>
 
-            <article class="prose max-w-none text-xl">
+            <article class="prose max-w-none text-xl space-y-6">
                 <?php the_content(); ?>
             </article>
         </div>
@@ -75,7 +75,7 @@
     <section class="mt-12">
         <h2 class="text-2xl font-bold mb-4">Posts Relacionados</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
+            <!-- Posts Relacionados (ACF) -->
             <?php
             ?>
         </div>
