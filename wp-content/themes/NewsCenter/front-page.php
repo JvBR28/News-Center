@@ -20,24 +20,22 @@
           while ($main_query->have_posts()) : $main_query->the_post();
             $post_count++;
             if ($post_count === 1) : ?>
-              <div class="lg:col-span-2 row-span-2 hover:bg-gray-200 transition duration-300">
+              <div class="lg:col-span-2 row-span-2 transition duration-300">
                 <a href="<?php the_permalink(); ?>" class="block">
                   <?php if (has_post_thumbnail()) : ?>
                     <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>" class="w-full h-64 object-cover mb-4">
                   <?php endif; ?>
-                  <h3 class="text-2xl font-semibold hover:text-blue-500 transition duration-300"><?php the_title(); ?></h3>
+                  <h3 class="text-2xl font-semibold transition duration-300 hover:text-blue-500"><?php the_title(); ?></h3>
                 </a>
-                <hr class="my-4 border-gray-300">
               </div>
             <?php else : ?>
-              <div class="hover:bg-gray-200 transition duration-300">
+              <div class="transition duration-300">
                 <a href="<?php the_permalink(); ?>" class="block">
                   <?php if (has_post_thumbnail()) : ?>
                     <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="w-full h-40 object-cover mb-4">
                   <?php endif; ?>
-                  <h3 class="text-xl font-semibold hover:text-blue-500 transition duration-300"><?php the_title(); ?></h3>
+                  <h3 class="text-xl font-semibold transition duration-300 hover:text-blue-500"><?php the_title(); ?></h3>
                 </a>
-                <hr class="my-4 border-gray-300">
               </div>
             <?php endif;
           endwhile;
@@ -74,22 +72,22 @@
               while ($category_query->have_posts()) : $category_query->the_post();
                 $post_count++;
                 if ($post_count === 1) : ?>
-                  <div class="mb-4 hover:bg-gray-200 transition duration-300">
+                  <div class="mb-4 transition duration-300">
                     <a href="<?php the_permalink(); ?>" class="block">
                       <?php if (has_post_thumbnail()) : ?>
                         <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="w-full h-40 object-cover mb-4">
                       <?php endif; ?>
-                      <h4 class="text-xl font-bold hover:text-blue-500 transition duration-300"><?php the_title(); ?></h4>
+                      <h4 class="text-xl font-bold transition duration-300 hover:text-blue-500"><?php the_title(); ?></h4>
                     </a>
                     <hr class="my-4 border-gray-300">
                   </div>
                 <?php else : ?>
-                  <div class="flex mb-4 items-center hover:bg-gray-200 transition duration-300">
+                  <div class="flex mb-4 items-center transition duration-300">
                     <?php if (has_post_thumbnail()) : ?>
                       <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php the_title(); ?>" class="w-20 h-20 object-cover rounded-lg mr-4">
                     <?php endif; ?>
                     <a href="<?php the_permalink(); ?>" class="block">
-                      <h4 class="text-md font-semibold hover:text-blue-500 transition duration-300"><?php the_title(); ?></h4>
+                      <h4 class="text-md font-semibold transition duration-300 hover:text-blue-500"><?php the_title(); ?></h4>
                     </a>
                   </div>
                 <?php endif;

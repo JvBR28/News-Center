@@ -28,10 +28,12 @@
     </nav>
 
     <div class="relative hidden lg:block">
-      <input type="text" placeholder="Buscar..." class="p-2 pl-10 rounded bg-gray-200 text-gray-800 focus:outline-none focus:bg-gray-300">
-      <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M14 10a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"></path>
-      </svg>
+      <form action="<?php echo esc_url(home_url('/')); ?>" method="get" class="relative">
+        <input type="text" name="s" placeholder="Buscar..." class="p-2 pl-10 rounded bg-gray-200 text-gray-800 focus:outline-none focus:bg-gray-300">
+        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M14 10a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"></path>
+        </svg>
+      </form>
     </div>
 
     <div class="block lg:hidden">
