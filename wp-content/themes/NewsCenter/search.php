@@ -22,14 +22,17 @@
       <?php endwhile; ?>
     </div>
     
-    <div class="mt-6">
-      <?php
-        // Paginação
-        the_posts_pagination([
-          'prev_text' => __('Anterior'),
-          'next_text' => __('Próxima'),
-        ]);
-      ?>
+    <div class="pagination mt-6 text-center">
+        <?php 
+        the_posts_pagination(array(
+            'mid_size'  => 2,
+            'prev_text' => __('« Anterior', 'textdomain'),
+            'next_text' => __('Próximo »', 'textdomain'),
+            'screen_reader_text' => ' ',
+            'before_page_number' => '<span class="pagination-page-number inline-block bg-gray-200 px-3 py-1 rounded hover:bg-gray-400 hover:text-white transition">',
+            'after_page_number'  => '</span>',
+        )); 
+        ?>
     </div>
 
   <?php else : ?>

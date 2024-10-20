@@ -8,6 +8,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <?php
         $main_query = new WP_Query(array(
+          'post_type' => 'noticias',
           'posts_per_page' => 3,
           'meta_key' => 'destaque',
           'meta_value' => '1',
@@ -52,7 +53,12 @@
       <h2 class="text-3xl font-bold mb-6">Categorias</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <?php
-        $categories = get_categories();
+        $categories = get_terms(array(
+          'taxonomy' => 'category',
+          'post_type' => 'noticias',
+          'hide_empty' => false,
+        ));
+
         $category_count = 0;
         foreach ($categories as $category) :
           $category_count++;
@@ -61,6 +67,7 @@
             <h3 class="text-xl font-semibold mb-4"><?php echo esc_html($category->name); ?></h3>
             <?php
             $category_query = new WP_Query(array(
+              'post_type' => 'noticias',
               'cat' => $category->term_id,
               'posts_per_page' => 5,
               'orderby' => 'date',

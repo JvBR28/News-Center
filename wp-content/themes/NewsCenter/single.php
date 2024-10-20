@@ -27,7 +27,7 @@
         <aside class="w-full lg:w-1/3 lg:pl-8">
             <h2 class="text-2xl font-bold mb-4">
                 Mais Lidas de <?php
-                    $category = get_the_category();
+                    $category = get_the_terms(get_queried_object_id(), 'category'); 
                     if (!empty($category)) {
                         echo esc_html($category[0]->name);
                     }
@@ -38,13 +38,20 @@
                 if (!empty($category)) {
                     $category_id = $category[0]->term_id;
                     $args = array(
-                        'cat' => $category_id,
-                        'posts_per_page' => 5,
-                        'orderby' => 'comment_count'
+                        'post_type' => 'noticias', 
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'category', 
+                                'field'    => 'term_id',
+                                'terms'    => $category_id, 
+                            ),
+                        ),
+                        'posts_per_page' => 5, 
+                        'orderby' => 'comment_count', 
                     );
-                    $popular_posts = new WP_Query($args);
-                    if ($popular_posts->have_posts()):
-                        while ($popular_posts->have_posts()): $popular_posts->the_post(); ?>
+                    $noticias_populares = new WP_Query($args);
+                    if ($noticias_populares->have_posts()):
+                        while ($noticias_populares->have_posts()): $noticias_populares->the_post(); ?>
                             <li class="flex items-center space-x-4">
                                 <?php if (has_post_thumbnail()): ?>
                                     <div class="w-24 h-24 overflow-hidden rounded-lg">

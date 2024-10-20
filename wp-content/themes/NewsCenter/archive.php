@@ -12,6 +12,7 @@
         $current_taxonomy = isset($queried_object->term_id) ? 'category' : 'post_tag';
 
         $latest_posts_query = new WP_Query(array(
+          'post_type' => 'noticias', 
           'posts_per_page' => 3,
           'orderby' => 'date',
           'order' => 'DESC',
@@ -73,11 +74,12 @@
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
         $all_posts_query = new WP_Query(array(
+          'post_type' => 'noticias', 
           'posts_per_page' => 10,
           'paged' => $paged, 
           'orderby' => 'date',
           'order' => 'DESC',
-          'post__not_in' => wp_list_pluck($latest_posts_query->posts, 'ID'),
+          'post__not_in' => wp_list_pluck($latest_posts_query->posts, 'ID'), 
           'tax_query' => array(
             array(
               'taxonomy' => $current_taxonomy,
@@ -86,6 +88,7 @@
             ),
           ),
         ));
+
         if ($all_posts_query->have_posts()) : 
           while ($all_posts_query->have_posts()) : $all_posts_query->the_post(); ?>
             <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl mb-8 flex">
