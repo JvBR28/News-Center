@@ -15,7 +15,6 @@ add_theme_support('post-thumbnails');
 
 
 
-// Create custom post type 'News'
 function create_news_post_type() {
   register_post_type('noticias',
       array(
@@ -32,7 +31,6 @@ function create_news_post_type() {
 }
 add_action('init', 'create_news_post_type');
 
-// Transfer all existing posts to 'News' post type
 function transfer_posts_to_news() {
   global $wpdb;
 
@@ -40,7 +38,6 @@ function transfer_posts_to_news() {
 }
 add_action('init', 'transfer_posts_to_news');
 
-// Hide the default 'Posts' menu in the admin dashboard
 function hide_default_posts_menu() {
   remove_menu_page('edit.php'); 
 }

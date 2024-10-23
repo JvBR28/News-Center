@@ -57,14 +57,20 @@
           'taxonomy' => 'category',
           'post_type' => 'noticias',
           'hide_empty' => false,
+          'exclude' => array(1), // Exclui a categoria 'Sem categoria'
         ));
 
         $category_count = 0;
         foreach ($categories as $category) :
           $category_count++;
+          // Pega a cor da categoria a partir do campo ACF
+          $category_color = get_field('cor_da_categoria', 'category_' . $category->term_id); 
         ?>
           <div>
-            <h3 class="text-xl font-semibold mb-4"><?php echo esc_html($category->name); ?></h3>
+            <!-- Título da Categoria com cor dinâmica e hover -->
+            <h3 class="text-xl font-semibold mb-4 transition duration-300 hover:text-opacity-70" style="color: <?php echo esc_attr($category_color); ?>;">
+              <?php echo esc_html($category->name); ?>
+            </h3>
             <?php
             $category_query = new WP_Query(array(
               'post_type' => 'noticias',
@@ -111,6 +117,7 @@
             </div>
           </div>
 
+          <!-- Divisória a cada três categorias -->
           <?php if ($category_count % 3 === 0) : ?>
             <div class="col-span-full">
               <hr class="my-6 border-t-2 border-gray-300">
