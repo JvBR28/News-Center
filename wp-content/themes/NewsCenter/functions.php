@@ -25,20 +25,20 @@ function create_news_post_type() {
           'public' => true,
           'has_archive' => true,
           'rewrite' => array('slug' => 'noticias'),
-          'supports' => array('title', 'editor', 'thumbnail'),
+          'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
       )
   );
 }
 add_action('init', 'create_news_post_type');
 
-function transfer_posts_to_news() {
-  global $wpdb;
+// function transfer_posts_to_news() {
+//   global $wpdb;
 
-  $wpdb->query("UPDATE {$wpdb->posts} SET post_type = 'noticias' WHERE post_type = 'post'");
-}
-add_action('init', 'transfer_posts_to_news');
+//   $wpdb->query("UPDATE {$wpdb->posts} SET post_type = 'Posts' WHERE post_type = 'noticias'");
+// }
+// add_action('init', 'transfer_posts_to_news');
 
-function hide_default_posts_menu() {
-  remove_menu_page('edit.php'); 
-}
-add_action('admin_menu', 'hide_default_posts_menu');
+// function hide_default_posts_menu() {
+//   remove_menu_page('edit.php'); 
+// }
+// add_action('admin_menu', 'hide_default_posts_menu');

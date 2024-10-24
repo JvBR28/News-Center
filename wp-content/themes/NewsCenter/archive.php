@@ -12,7 +12,6 @@
         $current_taxonomy = isset($queried_object->term_id) ? 'category' : 'post_tag';
 
         $latest_posts_query = new WP_Query(array(
-          'post_type' => 'noticias', 
           'posts_per_page' => 3,
           'orderby' => 'date',
           'order' => 'DESC',
@@ -74,7 +73,6 @@
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
         $all_posts_query = new WP_Query(array(
-          'post_type' => 'noticias', 
           'posts_per_page' => 10,
           'paged' => $paged, 
           'orderby' => 'date',

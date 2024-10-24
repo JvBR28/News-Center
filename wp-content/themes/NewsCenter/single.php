@@ -75,7 +75,6 @@
                 if (!empty($category)) {
                     $category_id = $category[0]->term_id;
                     $args = array(
-                        'post_type' => 'noticias', 
                         'tax_query' => array(
                             array(
                                 'taxonomy' => 'category', 
