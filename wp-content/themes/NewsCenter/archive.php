@@ -31,12 +31,12 @@
             $post_count++;
             
             if ($post_count === 1) : ?>
-              <div class="lg:col-span-2 row-span-2 bg-white p-4 rounded-lg shadow-md hover:shadow-lg">
+              <div class="lg:col-span-2 row-span-2 transition duration-300 bg-white p-4 rounded-lg shadow-md hover:shadow-lg">
                 <a href="<?php the_permalink(); ?>" class="block">
                   <?php if (has_post_thumbnail()) : ?>
-                    <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>" class="w-full h-72 object-cover rounded-lg mb-4">
+                    <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>" class="w-full h-72 lg:h-[500px] object-cover rounded-lg mb-4">
                   <?php endif; ?>
-                  <h3 class="text-2xl font-semibold"><?php the_title(); ?></h3>
+                  <h3 class="text-3xl font-semibold transition duration-300 hover:text-blue-500"><?php the_title(); ?></h3>
                 </a>
                 <p class="text-gray-700 mt-2"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                 <a href="<?php the_permalink(); ?>" class="text-blue-500 hover:text-blue-700 font-bold mt-4 block">
@@ -45,12 +45,12 @@
               </div>
 
             <?php else : ?>
-              <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg">
+              <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                 <a href="<?php the_permalink(); ?>" class="block">
                   <?php if (has_post_thumbnail()) : ?>
                     <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="w-full h-48 object-cover rounded-lg mb-4">
                   <?php endif; ?>
-                  <h3 class="text-xl font-semibold"><?php the_title(); ?></h3>
+                  <h3 class="text-xl font-semibold transition duration-300 hover:text-blue-500"><?php the_title(); ?></h3>
                 </a>
                 <p class="text-gray-700 mt-2"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                 <a href="<?php the_permalink(); ?>" class="text-blue-500 hover:text-blue-700 font-bold mt-4 block">
